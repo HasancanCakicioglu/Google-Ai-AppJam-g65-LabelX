@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "984543931107",
+    "project_id": "labeling-app-6601c",
+    "storage_bucket": "labeling-app-6601c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:984543931107:android:ab812c8387728995c1f3d6",
+        "android_client_info": {
+          "package_name": "com.example.labeling"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQ8yuxooVtA_wE09P2eHiQe20KXvATPVA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
