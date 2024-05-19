@@ -6,25 +6,25 @@ void showHeartDialog(BuildContext context){
               context: context,
               builder: (BuildContext context) {
                 return AlertDialog(
-                  title: Text("Kalbiniz Kalmadı"),
-                  content: Text("Oynamak için kalbiniz kalmadı. Kalbinizin yenilenmesini bekleyebilirsiniz veya etiketleme yaparak kalplerinizi hemen yenileyebilirsiniz."),
+                  title: const Text("Kalbiniz Kalmadı",style: TextStyle(fontWeight: FontWeight.bold),),
+                  content: const Text("Oynamak için kalbiniz kalmadı. Kalbinizin yenilenmesini bekleyebilirsiniz veya etiketleme yaparak kalplerinizi hemen yenileyebilirsiniz."),
                   actions: [
                     TextButton(
                       onPressed: () {
                         Navigator.pop(context); // Dialog kapat
                       },
-                      child: Text("Bekle"),
+                      child: const Text("Bekle",style: TextStyle(color: Colors.red)),
                     ),
                     TextButton(
                       onPressed: () {
-                        Navigator.push(
+                        Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => LabelViewPage(), // Etiketleme sayfasına git
+                            builder: (context) => const LabelViewPage(), // Etiketleme sayfasına git
                           ),
                         );
                       },
-                      child: Text("Etiketle"),
+                      child: const Text("Etiketle",style: TextStyle(color: Colors.green)),
                     ),
                   ],
                 );

@@ -1,28 +1,26 @@
-import 'dart:async';
-
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:labeling/Utility/showDialog.dart';
 import 'package:labeling/components/brick.dart';
+import 'dart:async';
+
 import 'package:labeling/provider/cubit_heart/heart_cubit.dart';
 
-class BrickBreakerGame extends StatefulWidget {
-  const BrickBreakerGame({super.key});
 
+class BrickBreakerGame extends StatefulWidget {
   @override
-  // ignore: library_private_types_in_public_api
   _BrickBreakerGameState createState() => _BrickBreakerGameState();
 }
 
-class _BrickBreakerGameState extends State<BrickBreakerGame>
-    with SingleTickerProviderStateMixin {
+class _BrickBreakerGameState extends State<BrickBreakerGame> with SingleTickerProviderStateMixin {
   double paddleX = 0.0;
   double paddleWidth = 100.0;
   double ballX = 0.0;
   double ballY = 0.0;
   double ballRadius = 10.0;
-  double ballSpeedX = 3.0;
-  double ballSpeedY = 3.0;
+  double ballSpeedX = 4.5;
+  double ballSpeedY = 4.5;
   double screenWidth = 0.0;
   double screenHeight = 0.0;
   Timer? _timer;
@@ -78,9 +76,7 @@ class _BrickBreakerGameState extends State<BrickBreakerGame>
     }
 
     // Platforma çarpma
-    if (ballY >= screenHeight - ballRadius * 2 - 50 &&
-        ballX >= paddleX &&
-        ballX <= paddleX + paddleWidth) {
+    if (ballY >= screenHeight - ballRadius * 2 - 50 && ballX >= paddleX && ballX <= paddleX + paddleWidth) {
       ballSpeedY = -ballSpeedY;
     }
 
@@ -126,8 +122,8 @@ class _BrickBreakerGameState extends State<BrickBreakerGame>
                   GameOver = false;
                   ballX = screenWidth / 2 - ballRadius;
                   ballY = screenHeight / 2 - ballRadius;
-                  ballSpeedX = 3.0;
-                  ballSpeedY = 3.0;
+                  ballSpeedX = 4.5;
+                  ballSpeedY = 4.5;
                   _createBricks();
                   isGameStarted = false; // Oyun başlangıcına döner
                 });
@@ -153,21 +149,28 @@ class _BrickBreakerGameState extends State<BrickBreakerGame>
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 20),
-            child: Row(
-              children: [
-                // Beyaz kalpler
-                for (int i = 0; i < 3 - aliveHeartCount; i++)
-                  const Icon(
-                    Icons.favorite_border,
-                    color: Colors.white, // Boş kalpler beyaz olacak
-                  ),
-                // Kırmızı kalpler
-                for (int i = 0; i < aliveHeartCount; i++)
-                  const Icon(
-                    Icons.favorite,
-                    color: Colors.red, // Canlı kalpler kırmızı olacak
-                  ),
-              ],
+            child: InkWell(
+              onTap: () {
+                if(context.read<HeartCubit>().getAliveHeartCount()==0){
+                  showHeartDialog(context);
+                }
+              },
+              child: Row(
+                children: [
+                  // Beyaz kalpler
+                  for (int i = 0; i < 3 - aliveHeartCount; i++)
+                    const Icon(
+                      Icons.favorite_border,
+                      color: Colors.white, // Boş kalpler beyaz olacak
+                    ),
+                  // Kırmızı kalpler
+                  for (int i = 0; i < aliveHeartCount; i++)
+                    const Icon(
+                      Icons.favorite,
+                      color: Colors.red, // Canlı kalpler kırmızı olacak
+                    ),
+                ],
+              ),
             ),
           ),
         ],
@@ -179,7 +182,7 @@ class _BrickBreakerGameState extends State<BrickBreakerGame>
           style: TextStyle(color: Colors.white),
         ),
       ),
-      backgroundColor: const Color(0xFF0B132B),
+      backgroundColor: const Color(0xFFd9d9d9),
       body: LayoutBuilder(
         builder: (context, constraints) {
           screenWidth = constraints.maxWidth;
@@ -220,55 +223,8 @@ class _BrickBreakerGameState extends State<BrickBreakerGame>
                     width: 89,
                     height: 20,
                     decoration: BoxDecoration(
-                      color: Colors.brown, // Platform rengi
-                      borderRadius: const BorderRadius.only(
-                        topLeft:
-                            Radius.circular(10), // Sol üst köşe yuvarlaklığı
-                        bottomLeft:
-                            Radius.circular(10), // Sol alt köşe yuvarlaklığı
-                      ),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(
-                              0.5), // Beyaz renkli ve yarı saydam bir gölge
-                          spreadRadius: 5, // Gölgelendirme alanının genişliği
-                          blurRadius:
-                              10, // Gölgelendirme efektinin bulanıklık derecesi
-                          offset: const Offset(
-                              0, 0), // Gölgelendirme efektinin konumu (x, y)
-                        ),
-                      ],
-                    ),
-                    child: Stack(
-                      children: [
-                        Positioned(
-                          left: 10,
-                          bottom: 3,
-                          child: Container(
-                            width: 85,
-                            height: 15,
-                            color: Colors.grey, // Sayfa alt rengi
-                          ),
-                        ),
-                        Positioned(
-                          left: 9,
-                          bottom: 15,
-                          child: Container(
-                            width: 87,
-                            height: 15,
-                            color: Colors.brown, // üst kapak
-                          ),
-                        ),
-                        Positioned(
-                          left: 9,
-                          top: 15,
-                          child: Container(
-                            width: 87,
-                            height: 15,
-                            color: Colors.brown, // alt kapak
-                          ),
-                        ),
-                      ],
+                      color: Color(0xFF36a652), // Platform rengi
+                      borderRadius: BorderRadius.circular(10), // Sol alt köşe yuvarlaklığı
                     ),
                   ),
                 ),
@@ -281,14 +237,14 @@ class _BrickBreakerGameState extends State<BrickBreakerGame>
                     width: ballRadius * 2,
                     height: ballRadius * 2,
                     decoration: BoxDecoration(
-                      color: Colors.red,
+                      color: Color(0xFFe84436),
                       shape: BoxShape.circle,
                       boxShadow: [
                         BoxShadow(
                           color: Colors.black.withOpacity(0.3), // Gölge rengi
                           spreadRadius: 2,
                           blurRadius: 5,
-                          offset: const Offset(0, 3),
+                          offset: Offset(0, 3),
                         ),
                       ],
                     ),
@@ -304,14 +260,10 @@ class _BrickBreakerGameState extends State<BrickBreakerGame>
                     ),
                 // Başlamak için tıklayın metni
                 if (!isGameStarted)
-                  const Center(
+                  Center(
                     child: Text(
                       "Başlamak için tıklayın",
-                      style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
+                      style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold,color: Colors.white,),
                     ),
                   ),
               ],
@@ -323,38 +275,28 @@ class _BrickBreakerGameState extends State<BrickBreakerGame>
   }
 
   Widget _buildBookBrick(double width, double height) {
-    return SizedBox(
-      width: width,
-      height: height,
+    return Container(
+      width: 80,
+      height: 20,
       child: Stack(
         children: [
           // Sol taraf
           Positioned(
-            left: 0,
+            left: 6,
+            top: 1,
             child: Container(
-              width: 80,
+              width: width,
               height: height,
               decoration: BoxDecoration(
-                color: Colors.blue.shade700,
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(10),
-                  bottomLeft: Radius.circular(10),
-                ),
+                color: Color(0xFF4584f0),
+                borderRadius: BorderRadius.circular(10),
               ),
-            ),
-          ),
-          // Ortadaki çizgi
-          Positioned(
-            left: 10,
-            top: 5,
-            child: Container(
-              width: 65,
-              height: 10,
-              color: Colors.grey,
             ),
           ),
         ],
       ),
     );
   }
+
+
 }

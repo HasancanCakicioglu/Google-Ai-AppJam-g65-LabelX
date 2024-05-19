@@ -47,4 +47,8 @@ class TranslationService {
   Future<bool> isModelDownloaded({String bcpCode = 'en'}) async {
     return await _modelManager.isModelDownloaded(bcpCode);
   }
+
+  Future<String> translateText(String text) async {
+    return await _translator.translateText(text);
+  }
 }

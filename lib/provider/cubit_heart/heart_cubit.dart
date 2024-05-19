@@ -63,4 +63,9 @@ class HeartCubit extends HydratedCubit<List<DateTime>> {
 
     return aliveHeartCount;
   }
+
+
+  void refreshHearts() {
+    emit([...List<DateTime>.generate(3, (index) => DateTime.now())]);
+  }
 }
