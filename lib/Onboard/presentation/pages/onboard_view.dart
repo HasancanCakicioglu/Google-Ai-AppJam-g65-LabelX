@@ -94,7 +94,7 @@ class _OnBoardingPageViewState extends State<OnBoardingPageView>
               )
             : const SizedBox(),
 
-        index >= 2
+        index >= 1
             ? Align(
                 alignment: Alignment.center,
                 child: Padding(

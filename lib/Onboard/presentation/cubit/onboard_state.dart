@@ -19,7 +19,7 @@ class OnBoardState extends Equatable {
   final bool finished;
 
   const OnBoardState({
-    this.percentage = 0.145,
+    this.percentage = 0.167,
     this.index = 0,
     this.finished = false,
   });

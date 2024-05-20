@@ -17,6 +17,6 @@ class OnBoardCubit extends Cubit<OnBoardState> {
   /// Changes the state to update the current index and percentage of completion.
   void onBoardIndexChangeState(int currentIndex) {
     emit(state.copyWith(
-        index: currentIndex, percentage: (currentIndex + 1) * 0.145));
+        index: currentIndex, percentage: (currentIndex + 1) * 0.167));
   }
 }

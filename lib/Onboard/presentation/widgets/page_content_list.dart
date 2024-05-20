@@ -39,13 +39,6 @@ List<OnBoardingContentModel> onBoardingContentsList = [
     image: "1",
   ),
   OnBoardingContentModel(
-    title: "",
-    description: "",
-    color:const Color.fromRGBO(202, 73, 214,1.0),
-    colorText: Colors.white,
-    image: "2",
-  ),
-  OnBoardingContentModel(
     title: "Bilginin Gücü Uygulamasına Hoş Geldiniz!",
     description: "Bu uygulama ile hem eğlenip hem de bilgi ve yeteneklerinizi geliştirebilirsiniz.",
     color:const Color.fromRGBO(53, 166, 82,1.0),
