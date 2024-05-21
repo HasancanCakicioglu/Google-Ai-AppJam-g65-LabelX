@@ -18,13 +18,10 @@ To run this project, you need to have Flutter 3.22.0 and Dart 3.4.0 installed on
    ```bash
    git clone https://github.com/HasancanCakicioglu/labeling.git
    
-2. Navigate to the project directory:
-   ```bash
-   cd labeling
-3. Fetch the dependencies:
+2. Fetch the dependencies:
    ```bash
    flutter pub get
-4. Run
+3. Run
 
 ## Versions
 - Flutter: 3.22.0
