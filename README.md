@@ -1,8 +1,8 @@
-# Labeling Application
+# LabelX
 
 ## Overview
 
-Labeling is an innovative application designed to build a large dataset for various purposes. Unlike traditional methods where users watch ads to continue playing a game after losing, this application prompts users to take a photo of any object around them and label it. This photo and label data are then stored in our database, allowing us to gather a significant amount of data.
+LabelX is an innovative application designed to build a large dataset for various purposes. Unlike traditional methods where users watch ads to continue playing a game after losing, this application prompts users to take a photo of any object around them and label it. This photo and label data are then stored in our database, allowing us to gather a significant amount of data.
 
 ## Features
 
@@ -16,7 +16,7 @@ To run this project, you need to have Flutter 3.22.0 and Dart 3.4.0 installed on
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/HasancanCakicioglu/labeling.git
+   git clone https://github.com/HasancanCakicioglu/Google-Ai-AppJam-g65-LabelX.git
    
 2. Fetch the dependencies:
    ```bash
